@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employees</title>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+          rel="stylesheet"
+  />
+  <style>
+    body{
+      padding-top: 100px;
+    }
+    button {
+      border-radius: 15px 15px 15px 15px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      /*border-collapse: collapse;*/
+    }
+
+    .add {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-left: 45%;
+    }
+
+    label, input {
+      height: 30px;
+      width: 200px;
+      text-align: left;
+      font-size: 20px;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    form button{
+      width: 320px;
+      height: 35px;
+      margin-top: 20px;
+      border: none;
+      background-color:cadetblue;
+      color: black;
+      font-size: 18px;
+    }
+
+  </style>
+
+</head>
+<body>
+<form action="/addEmployee" method="post">
+  <div class="add">
+    <label>Employee ID: </label>
+    <input type="text" placeholder="" name="id"/>
+
+    <label>First Name: </label>
+    <input type="tetx" placeholder="" name="firstName"/>
+
+    <label>Last Name: </label>
+    <input type="text" name="lastName">
+
+    <label> Email: </label>
+    <input type="text" name="email">
+
+    <button style="color: white; background-color: blue; width: 100px; height: 30px"><b>Add</b></button>
+  </div>
+</form>
+</body>
+</html>

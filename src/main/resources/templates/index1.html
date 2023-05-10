@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+<body>
+
+<table>
+  <tr>
+    <td th:text="${employees.getId()}"/>
+    <td th:text="${employees.getFirstName()}"/>
+    <td th:text="${employees.getLastName()}"/>
+    <td th:text="${employees.getEmail()}"/>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+    />
+<style>
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
+    button {
+        border-radius: 15px 15px 15px 15px;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        /*border-collapse: collapse;*/
+
+    }
+
+    label
+    {
+        font-weight: 600;
+    }
+</style>
+
+</head>
+<body>
+<center style="padding-top: 30px">
+
+<form action="/listId" method="get">
+    <div>
+        <label>Enter ID:</label>
+        <input type="text" name="id">
+        <button style ="background-color: greenyellow;"> Submit</button>
+    </div>
+    <br>
+</form>
+    <form action="/add" method="get">
+        <button style="background-color: blue; color: white">
+            <b>Create Employee</b></button>
+        <h3 th:text="${status}"></h3>
+    </form>
+
+
+<table th >
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+
+    </tr>
+    <span th:if="${list_employees != null}">
+    <tr  th:each="temp :  ${list_employees}">
+            <td th:text="${temp.id}"/>
+            <td th:text="${temp.firstName}"/>
+            <td th:text="${temp.lastName}"/>
+            <td th:text="${temp.email}"/>
+        <td>
+            <button style="background-color: blue;"><a th:href="@{/update(id=${temp.id})}"><b>Update</b></a>
+                            </button>
+            <button style="background-color: red;"> <a th:href="'javascript:void(0);'" th:onclick="'ShowMess(\'' + ${temp.id} + '\')'">
+                <b>Delete</b>
+            </a>
+            </button>
+        </td>
+
+    </tr>
+    </span>
+    <tr th:if="${employees != null}">
+        <td th:text="${employees.getId()}"/>
+        <td th:text="${employees.getFirstName()}"/>
+        <td th:text="${employees.getLastName()}"/>
+        <td th:text="${employees.getEmail()}"/>
+        <td>
+            <button style="background-color: blue;"><a th:href="@{/update(id=${employees.getId()})}"><b>Update</b></a></button>
+<!--            <button style="background-color: red;"> <a th:href="@{/delete(id=${employees.getId()})}"><b>Delete</b></a>-->
+<!--            </button>-->
+            <button style="background-color: red;"> <a th:href="'javascript:void(0);'" th:onclick="'ShowMess(\'' + ${employees.getId()} + '\')'">
+                <b>Delete</b>
+            </a>
+            </button>
+        </td>
+    </tr>
+</table>
+</center>
+</body>
+<script type="text/javascript">
+    function ShowMess(employeeId) {
+        var option = confirm('Bạn có đồng ý xóa thông tin nhân viên!!');
+        if (option === true) {
+            window.location.href = "/delete?id=" + employeeId;
+        }
+    }
+
+</script>
+</html>
